@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'toby'
+
+sourceCompatibility = 11
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.16'
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.4.2")
+    testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '2.22.0'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.12.1'
+}
+
+test {
+    useJUnitPlatform()
+}
