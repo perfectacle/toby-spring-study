@@ -39,7 +39,7 @@ class ClientXml {
         System.out.println(this.context);
 
         this.dao = context.getBean("userDaoDConnection", UserDao.class);
-        this.dao.reset();
+        this.dao.deleteAll();
     }
 
     @Test
@@ -68,7 +68,7 @@ class ClientXml {
 
     @Test
     void testGetEmpty() throws SQLException {
-        dao.reset();
+        dao.deleteAll();
         assertEquals(0, dao.getCount());
 
         assertThrows(EmptyResultDataAccessException.class, () -> dao.get(""));
@@ -76,7 +76,7 @@ class ClientXml {
 
     @Test
     void countingAndDeleteTest() throws SQLException {
-        dao.reset();
+        dao.deleteAll();
 
         assertEquals(0, dao.getCount());
 
@@ -89,7 +89,7 @@ class ClientXml {
         dao.add(user3);
         assertEquals(3, dao.getCount());
 
-        dao.reset();
+        dao.deleteAll();
 
         assertEquals(0, dao.getCount());
     }

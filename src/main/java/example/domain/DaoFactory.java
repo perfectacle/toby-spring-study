@@ -9,14 +9,7 @@ import javax.sql.DataSource;
 @Configuration
 public class DaoFactory {
     @Bean
-    public UserDao userDaoDConnection(DataSource dataSource) {
-        UserDao userDao = new UserDao();
-        userDao.setDataSource(dataSource);
-        return userDao;
-    }
-
-    @Bean
-    public DataSource dataSource() {
+    public DataSource dataSourceBean() {
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
         dataSource.setDriverClass(com.mysql.cj.jdbc.Driver.class);
         dataSource.setUrl("jdbc:mysql://localhost/toby?serverTimezone=UTC");

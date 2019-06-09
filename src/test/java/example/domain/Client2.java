@@ -20,24 +20,41 @@
 //import static org.junit.jupiter.api.Assertions.assertThrows;
 //
 //@ExtendWith(SpringExtension.class)
-//@ContextConfiguration(classes = DaoFactory.class)
+//@ContextConfiguration(locations = "/applicationContext.xml")
 //class Client2 {
 //    @Autowired
-//    private UserDao userDao;
+//    private UserDao UserDao;
+//
+//    private static User user;
+//    private static User user2;
+//    private static User user3;
+//
+//    @BeforeAll
+//    static void setupAll() {
+//        user = new User("whiteship", "백기선", "married");
+//        user2 = new User("whiteship2", "백기선", "married");
+//        user3 = new User("whiteship3", "백기선", "married");
+//    }
+//
+//    @BeforeEach
+//    void setup() throws SQLException {
+//        UserDao.deleteAll();
+//    }
 //
 //    @Test
-//    @DirtiesContext
 //    void testAdd() throws SQLException {
-//        userDao.setDataSource(new DriverManagerDataSource());
+//        UserDao.add(user);
+//
+//        assertEquals(1, UserDao.getCount());
 //    }
 //
 //    @Test
 //    void testGet() throws SQLException {
-//        dao.add(user);
-//        dao.add(user2);
+//        UserDao.add(user);
+//        UserDao.add(user2);
 //
-//        User user3 = dao.get(user.getId());
-//        User user4 = dao.get(user2.getId());
+//        User user3 = UserDao.get(user.getId());
+//        User user4 = UserDao.get(user2.getId());
 //
 //        assertEquals(user.getId(), user3.getId());
 //        assertEquals(user.getName(), user3.getName());
@@ -50,43 +67,29 @@
 //
 //    @Test
 //    void testGetEmpty() throws SQLException {
-//        dao.reset();
-//        assertEquals(0, dao.getCount());
+//        UserDao.deleteAll();
+//        assertEquals(0, UserDao.getCount());
 //
-//        assertThrows(EmptyResultDataAccessException.class, () -> dao.get(""));
+//        assertThrows(EmptyResultDataAccessException.class, () -> UserDao.get(""));
 //    }
 //
 //    @Test
 //    void countingAndDeleteTest() throws SQLException {
-//        dao.reset();
+//        UserDao.deleteAll();
 //
-//        assertEquals(0, dao.getCount());
+//        assertEquals(0, UserDao.getCount());
 //
-//        dao.add(user);
-//        assertEquals(1, dao.getCount());
+//        UserDao.add(user);
+//        assertEquals(1, UserDao.getCount());
 //
-//        dao.add(user2);
-//        assertEquals(2, dao.getCount());
+//        UserDao.add(user2);
+//        assertEquals(2, UserDao.getCount());
 //
-//        dao.add(user3);
-//        assertEquals(3, dao.getCount());
+//        UserDao.add(user3);
+//        assertEquals(3, UserDao.getCount());
 //
-//        dao.reset();
+//        UserDao.deleteAll();
 //
-//        assertEquals(0, dao.getCount());
+//        assertEquals(0, UserDao.getCount());
 //    }
-////
-////    @Test
-////    void countingTest() throws SQLException {
-////        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(CountingDaoFactory.class);
-////        UserDao dao = context.getBean("userDao", UserDao.class);
-////
-////        dao.get("whiteship");
-////        dao.get("whiteship");
-////        dao.get("whiteship");
-////
-////        CountingConnectionMaker connectionMaker = context.getBean("connectionMaker", CountingConnectionMaker.class);
-////        CountingConnectionMaker connectionMaker2 = context.getBean("connectionMaker", CountingConnectionMaker.class);
-////        assertEquals(3, connectionMaker.getCounter());
-////    }
 //}
