@@ -28,6 +28,8 @@ class ApplicationContextTest {
 
     @Test
     void test1() {
+
+
         assertFalse(testObjects.contains(this));
         testObjects.add(this);
 

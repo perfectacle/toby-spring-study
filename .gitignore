@@ -28,3 +28,7 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+
+BaeminTest*
+KakaoTest*
+/src/test/java/example/domain/balance/*

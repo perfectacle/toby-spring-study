@@ -8,7 +8,7 @@
         <property name="username" value="root" />
         <property name="password" value="1234" />
     </bean>
-    <bean id="userDao" class="example.domain.UserDao">
+    <bean id="userDao" class="example.domain.UserDaoJdbc">
         <property name="dataSourceBean" ref="dataSourceBean" />
     </bean>
 
